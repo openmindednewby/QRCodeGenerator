@@ -206,6 +206,6 @@ input[type="file"] {
 
 .input-zone { margin: 20px 0; text-align: center; }
 .qrcode-output { margin: 20px 0; text-align: center; }
-.generate-btn, .copy-btn { padding: 10px 20px; margin: 5px; background: #00ffcc; border: none; border-radius: 5px; cursor: pointer; }
+.generate-btn, .copy-btn { padding: 10px 20px; margin: 5px; background: #00ffff; border: none; border-radius: 5px; cursor: pointer; }
 .generate-btn:hover, .copy-btn:hover { background: #00b894; }
 .copy-btn:disabled { background: #ccc; cursor: not-allowed; }
