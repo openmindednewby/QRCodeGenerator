@@ -3,7 +3,7 @@ Live on https://qr-code-generator.dloizides.com/
 
 Free open source QRCode generator that runs on the browser using **QRCode.js** https://davidshimjs.github.io/qrcodejs/
 
-![alt text](ocr-scanner-preview.jpg)
+![alt text](qr-code-generator-preview.png)
 
 ## Addons
 

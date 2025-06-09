@@ -1,7 +1,7 @@
 {
-  "name": "Futuristic OCR Scanner",
-  "short_name": "OCR Scanner",
-  "description": "Extract text from images locally with Tesseract.js.",
+  "name": "QR Code Generator",
+  "short_name": "QR Code",
+  "description": "Generate qr codes and scan them with a futuristic design.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#1a1a1a",
