@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Extract text from images instantly with our futuristic OCR scanner. Powered by Tesseract.js, this tool processes images locally in your browser for fast, secure, and accurate text extraction.">
-  <meta name="keywords" content="OCR scanner, text extraction, image to text, Tesseract.js, online OCR, local OCR, futuristic OCR tool">
+  <meta name="description" content="Generate QR codes instantly with our futuristic QR code generator. Create and copy QR codes directly in your browser, powered by QRCode.js, with no server uploads required.">
+  <meta name="keywords" content="QR code generator, create QR code, QR code online, QRCode.js, futuristic QR tool">
   <meta name="author" content="openmindednewby">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Futuristic OCR Scanner - Extract Text from Images">
-  <meta property="og:description" content="Use our browser-based OCR scanner to extract text from images locally, powered by Tesseract.js. Fast, secure, and no server uploads required.">
+  <meta property="og:title" content="Futuristic QR Code Generator">
+  <meta property="og:description" content="Use our browser-based QR code generator to create and copy QR codes locally, powered by QRCode.js. Fast, secure, and futuristic.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.ocr-scanner.dloizides.com">
-  <meta property="og:image" content="https://www.ocr-scanner.dloizides.com/ocr-scanner-preview.jpg">
+  <meta property="og:url" content="https://www.qr-generator.dloizides.com">
+  <meta property="og:image" content="https://www.qr-generator.dloizides.com/qr-generator-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Futuristic OCR Scanner - Extract Text from Images">
-  <meta name="twitter:description" content="Extract text from images locally in your browser with our Tesseract.js-powered OCR scanner. Secure, fast, and futuristic.">
-  <meta name="twitter:image" content="https://www.ocr-scanner.dloizides.com/ocr-scanner-preview.jpg">
+  <meta name="twitter:title" content="Futuristic QR Code Generator">
+  <meta name="twitter:description" content="Generate and copy QR codes locally in your browser with our QRCode.js-powered tool. Secure, fast, and futuristic.">
+  <meta name="twitter:image" content="https://www.qr-generator.dloizides.com/qr-generator-preview.jpg">
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline'  https://cdn.jsdelivr.net https://unpkg.com 'wasm-unsafe-eval';
-    worker-src 'self' blob:;
-    connect-src 'self' blob: data: https://cdn.jsdelivr.net https://unpkg.com;
+    script-src 'self' 'unsafe-inline' https://cdn.rawgit.com https://unpkg.com;
+    connect-src 'self' data: https://cdn.rawgit.com https://unpkg.com;
     style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
     font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
-    img-src 'self' https://www.ocr-scanner.dloizides.com data: blob:;
+    img-src 'self' https://www.qr-generator.dloizides.com data: blob:;
     object-src 'none';
     base-uri 'self';
   ">
@@ -31,17 +30,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Delius&display=swap">
   <link rel="stylesheet" href="styles.css">
-  <link rel="canonical" href="https://www.ocr-scanner.dloizides.com">
-  <title>Futuristic OCR Scanner</title>
+  <link rel="canonical" href="https://www.qr-generator.dloizides.com">
+  <title>Futuristic QR Code Generator</title>
   <script type="application/ld+json" nonce="abc123">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Futuristic OCR Scanner",
+    "name": "Futuristic QR Code Generator",
     "operatingSystem": "Web",
     "applicationCategory": "UtilityApplication",
-    "description": "A browser-based OCR scanner that extracts text from images locally using Tesseract.js.",
-    "url": "https://www.ocr-scanner.dloizides.com",
+    "description": "A browser-based QR code generator that creates QR codes locally using QRCode.js.",
+    "url": "https://www.qr-generator.dloizides.com",
     "author": {
       "@type": "Person",
       "name": "openmindednewby"
@@ -53,34 +52,30 @@
 <body>
   <div class="container">
     <header>
-      <h1>OCR Scanner</h1>
+      <h1>QR Code Generator</h1>
     </header>
     <main>
-      <div id="dropZone" class="drop-zone" role="region" aria-dropeffect="copy" tabindex="0">
-        <p>Drag & Drop an Image Here<br>or</p>
-        <label for="imageInput" class="upload-btn">Upload Image</label>
-        <button id="pasteBtn" class="upload-btn" aria-label="Paste image from clipboard">Paste Image</button>
-        <input type="file" id="imageInput" accept="image/*" aria-describedby="imageInputHelp">
-        <p id="imageInputHelp" class="sr-only">Upload or drag and drop an image file (e.g., PNG, JPEG) to extract text using our local OCR scanner powered by Tesseract.js.</p>
+      <div id="inputZone" class="input-zone" role="region" aria-label="QR Code Input Area" tabindex="0">
+        <input type="text" id="textInput" placeholder="Enter URL or text" size="30" aria-describedby="inputHelp">
+        <button id="generateBtn" class="generate-btn" aria-label="Generate QR Code">Generate QR Code</button>
+        <p id="inputHelp" class="sr-only">Enter a URL or text to generate a QR code using our local QR code generator powered by QRCode.js.</p>
       </div>
-      <img id="preview" alt="Image Preview">
-      <div id="loading" class="loading">Processing...</div>
+      <div id="qrcode" class="qrcode-output"></div>
       <div class="output-container">
-        <div id="output">Extracted text will appear here...</div>
-        <button id="copyBtn" class="copy-btn" aria-label="Copy extracted text to clipboard"><i class="fas fa-copy"></i></button>
+        <button id="copyBtn" class="copy-btn" aria-label="Copy QR code image to clipboard"><i class="fas fa-copy"></i></button>
       </div>
     </main>
     <footer>
       <div class="footer">
         <div>
-          Powered by <a href="https://github.com/openmindednewby/OCROnTheWeb" target="_blank" rel="noopener">openmindednewby OCROnTheWeb</a>
+          Powered by <a href="https://github.com/openmindednewby/QRCodeGenerator.git" target="_blank" rel="noopener">openmindednewby QRCodeGenerator</a>
         </div>
         <div>
           More at <a href="https://www.dloizides.com/" target="_blank" rel="noopener">https://www.dloizides.com/</a>
         </div>
       </div>
       <div class="bottom-text">
-        We value your privacy, everything is done locally in your browser. The OCR is performed using <a href="https://tesseract.projectnaptha.com/" target="_blank" rel="noopener">Tesseract.js</a>, a pure JavaScript port of the Tesseract OCR engine.
+       Everything is done locally in your browser. The QR code generation is performed using <a href="https://davidshimjs.github.io/qrcodejs/" target="_blank" rel="noopener">QRCode.js</a>, a JavaScript library for QR code creation.
       </div>
     </footer>
   </div>
@@ -98,7 +93,51 @@
       });
     }
   </script>
-  <script src="https://unpkg.com/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
-  <script src="script.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    const textInput = document.getElementById('textInput');
+    const generateBtn = document.getElementById('generateBtn');
+    const qrcodeDiv = document.getElementById('qrcode');
+    const copyBtn = document.getElementById('copyBtn');
+
+    generateBtn.addEventListener('click', () => {
+      const text = textInput.value.trim();
+      qrcodeDiv.innerHTML = '';
+      if (text) {
+        new QRCode(qrcodeDiv, {
+          text: text,
+          width: 256,
+          height: 256,
+          colorDark: '#000000',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        copyBtn.disabled = false;
+      } else {
+        alert('Please enter a URL or text!');
+        copyBtn.disabled = true;
+      }
+    });
+
+    copyBtn.addEventListener('click', () => {
+      const qrCanvas = qrcodeDiv.querySelector('canvas');
+      if (qrCanvas) {
+        qrCanvas.toBlob((blob) => {
+          const item = new ClipboardItem({ 'image/png': blob });
+          navigator.clipboard.write([item]).then(() => {
+            alert('QR code image copied to clipboard!');
+          }).catch(err => {
+            console.error('Failed to copy image:', err);
+            alert('Failed to copy image. Please try again or right-click to save manually.');
+          });
+        });
+      } else {
+        alert('No QR code to copy. Generate a QR code first!');
+      }
+    });
+
+    // Disable copy button initially
+    copyBtn.disabled = true;
+  </script>
 </body>
 </html>
