@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Extract text from images instantly with our futuristic OCR scanner. Powered by Tesseract.js, this tool processes images locally in your browser for fast, secure, and accurate text extraction.">
+  <meta name="keywords" content="OCR scanner, text extraction, image to text, Tesseract.js, online OCR, local OCR, futuristic OCR tool">
+  <meta name="author" content="openmindednewby">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Futuristic OCR Scanner - Extract Text from Images">
+  <meta property="og:description" content="Use our browser-based OCR scanner to extract text from images locally, powered by Tesseract.js. Fast, secure, and no server uploads required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ocr-scanner.dloizides.com">
+  <meta property="og:image" content="https://www.ocr-scanner.dloizides.com/ocr-scanner-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Futuristic OCR Scanner - Extract Text from Images">
+  <meta name="twitter:description" content="Extract text from images locally in your browser with our Tesseract.js-powered OCR scanner. Secure, fast, and futuristic.">
+  <meta name="twitter:image" content="https://www.ocr-scanner.dloizides.com/ocr-scanner-preview.jpg">
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline'  https://cdn.jsdelivr.net https://unpkg.com 'wasm-unsafe-eval';
+    worker-src 'self' blob:;
+    connect-src 'self' blob: data: https://cdn.jsdelivr.net https://unpkg.com;
+    style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+    font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    img-src 'self' https://www.ocr-scanner.dloizides.com data: blob:;
+    object-src 'none';
+    base-uri 'self';
+  ">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Delius&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://www.ocr-scanner.dloizides.com">
+  <title>Futuristic OCR Scanner</title>
+  <script type="application/ld+json" nonce="abc123">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Futuristic OCR Scanner",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilityApplication",
+    "description": "A browser-based OCR scanner that extracts text from images locally using Tesseract.js.",
+    "url": "https://www.ocr-scanner.dloizides.com",
+    "author": {
+      "@type": "Person",
+      "name": "openmindednewby"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>OCR Scanner</h1>
+    </header>
+    <main>
+      <div id="dropZone" class="drop-zone" role="region" aria-dropeffect="copy" tabindex="0">
+        <p>Drag & Drop an Image Here<br>or</p>
+        <label for="imageInput" class="upload-btn">Upload Image</label>
+        <button id="pasteBtn" class="upload-btn" aria-label="Paste image from clipboard">Paste Image</button>
+        <input type="file" id="imageInput" accept="image/*" aria-describedby="imageInputHelp">
+        <p id="imageInputHelp" class="sr-only">Upload or drag and drop an image file (e.g., PNG, JPEG) to extract text using our local OCR scanner powered by Tesseract.js.</p>
+      </div>
+      <img id="preview" alt="Image Preview">
+      <div id="loading" class="loading">Processing...</div>
+      <div class="output-container">
+        <div id="output">Extracted text will appear here...</div>
+        <button id="copyBtn" class="copy-btn" aria-label="Copy extracted text to clipboard"><i class="fas fa-copy"></i></button>
+      </div>
+    </main>
+    <footer>
+      <div class="footer">
+        <div>
+          Powered by <a href="https://github.com/openmindednewby/OCROnTheWeb" target="_blank" rel="noopener">openmindednewby OCROnTheWeb</a>
+        </div>
+        <div>
+          More at <a href="https://www.dloizides.com/" target="_blank" rel="noopener">https://www.dloizides.com/</a>
+        </div>
+      </div>
+      <div class="bottom-text">
+        We value your privacy, everything is done locally in your browser. The OCR is performed using <a href="https://tesseract.projectnaptha.com/" target="_blank" rel="noopener">Tesseract.js</a>, a pure JavaScript port of the Tesseract OCR engine.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
