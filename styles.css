@@ -125,6 +125,7 @@ h1 {
 .qrcode-output {
   margin: 20px 0;
   text-align: center;
+  display: inline-flex;
 }
 
 .qrcode-output canvas {
