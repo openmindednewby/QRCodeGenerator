@@ -1,0 +1,13 @@
+# The image does `COPY . .` into the web root, so anything not excluded here is
+# publicly served. /.git/HEAD was reachable, exposing the whole repo history.
+# images.tar is a 21 MB docker image export, not a site asset.
+.git
+.github
+.gitignore
+.dockerignore
+.env*
+node_modules
+*.md
+*.tar
+*.dockerfile
+Dockerfile*
