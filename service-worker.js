@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ocr-scanner-v2';
+const CACHE_NAME = 'qr-code-generator-v1';
 const urlsToCache = [
   '/index.html',
   '/styles.css',
@@ -16,6 +16,9 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Only same-origin GETs: cross-origin calls (analytics beacon, CDNs not precached) go straight to the network.
+  const url = new URL(event.request.url);
+  if (event.request.method !== 'GET' || (url.origin !== self.location.origin && !urlsToCache.includes(event.request.url))) return;
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
