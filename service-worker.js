@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ocr-scanner-v1';
+const CACHE_NAME = 'ocr-scanner-v2';
 const urlsToCache = [
   '/index.html',
   '/styles.css',
